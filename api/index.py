@@ -24,7 +24,12 @@ class TelemetryRequest(BaseModel):
 # You’ll replace this with real telemetry CSV if required
 # For now, you can load from the sample bundle uploaded in the repo
 
-telemetry_data = pd.read_csv("telemetry.csv")  # upload telemetry CSV in repo root
+telemetry_data = pd.DataFrame({
+    "region": ["emea", "apac", "emea", "apac"],
+    "latency_ms": [120, 150, 180, 200],
+    "uptime": [0.99, 0.98, 0.97, 0.96]
+})
+  # upload telemetry CSV in repo root
 
 @app.post("/")
 def get_metrics(req: TelemetryRequest):
